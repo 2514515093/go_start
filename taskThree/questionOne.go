@@ -21,7 +21,7 @@ func main() {
 	//编写SQL语句将 students 表中姓名为 "张三" 的学生年级更新为 "四年级"。
 	//编写SQL语句删除 students 表中年龄小于 15 岁的学生记录
 
-	db, _ := createDb()
+	db, _ := CreateDb()
 	//insertStudent(db, &[]Student{
 	//	{Name: "张三", Age: 20, Grade: "三年级"},
 	//	{Name: "李四", Age: 14, Grade: "二年级"},
@@ -34,7 +34,7 @@ func main() {
 	deleteStudent(db, gorm.Expr("age < ?", 15))
 }
 
-func createDb() (*gorm.DB, error) {
+func CreateDb() (*gorm.DB, error) {
 	dsn := "root:root123@tcp(211.159.169.85:3306)/testdb?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	//创建表
